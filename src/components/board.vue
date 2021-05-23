@@ -133,7 +133,7 @@ export default {
       };
     },
 
-    randMax(board, player, depth = 1) {
+    randMax(board, player) {
       // If the board has 3 in a row return the score of the board.
       if (board.isGameOver()) {
         return {
