@@ -1,7 +1,7 @@
 <template>
   <div class="board-area">
     <div class="game-over-text" v-if="gameOver">
-      <h3>{{ gameOverText }}</h3>
+      <h3  class="board-text-format">{{ gameOverText }}</h3>
     </div>
     <div class="board-wrap">
       <div class="tictactoe-board" v-if="!gameOver">
@@ -16,14 +16,13 @@
       </div>
     </div>
     <div class="restart" @click="restart()">
-      <h3>Restart</h3>
+      <h3 class="board-text-format">Restart</h3>
     </div>
   </div>
 </template>
 <script>
 import cell from "./cell.vue";
 import Board from "../js/board";
-// import difficulty from "./difficulty.vue";
 
 export default {
   components: {
@@ -67,7 +66,7 @@ export default {
         this.gameOver = true;
         this.gameOverText = this.board.playerHas3InARow("x")
           ? "You win!"
-          : "Draw";
+          : " Draw ";
         return;
       }
 
@@ -81,8 +80,8 @@ export default {
         if (this.board.isGameOver()) {
           this.gameOver = true;
           this.gameOverText = this.board.playerHas3InARow("o")
-            ? "You lose! CHIBI!!!"
-            : "Draw";
+            ? "負けた　ねぇ"
+            : " Draw ";
         }
         this.$forceUpdate();
       }, 400);
@@ -133,7 +132,7 @@ export default {
       };
     },
 
-    randMax(board, player, depth = 1) {
+    randMax(board, player) {
       // If the board has 3 in a row return the score of the board.
       if (board.isGameOver()) {
         return {
@@ -163,12 +162,17 @@ export default {
 </script>
 <style>
 .game-over-text {
-  margin: 5%;
-  font-size: 10vw;
+  margin: 0%;
+  padding: 0;
+  font-size: 7vw;
 }
 .board-area {
   /* margin: 5%; */
   /* display: flex; */
+}
+.board-text-format {
+  margin: 3%;
+  padding: 0;
 }
 .restart {
   /* margin: 5%; */

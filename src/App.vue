@@ -1,14 +1,10 @@
 <template>
   <main class="base">
     <div id="app">
-      <h1>{{ title }}</h1>
-      <!-- <img alt="Vue logo" src="./assets/logo.png" width="25%"> -->
-      <!-- <section class="settings">
-        <selector name="size" :items="sizes" v-model="setSize" class="setting" />
-        <selector name="mode" :items="modes" v-model="mode" class="setting setting-mode" />
-        <selector name="bot-level" :items="botLevels" v-model="botLevel" class="setting" :style="{visibility: mode > 0 ?'' : 'hidden'}" />
-      </section> -->
+      <h1 class="board-text-format">{{ title }}</h1>
+
       <section class="board-container">
+        Level:
         <span @click="changeLevel()"> {{ diff }} </span>
         <options v-bind:level="diff" @click="changeLevel()" />
         <board v-bind:level="diff" />
@@ -54,13 +50,25 @@ body {
 }
 
 .base {
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  min-height: 100%;
   min-width: 100%;
   background-color: #6E4671;
 }
+.board-container {
+  margin: 0;
+  padding: 0;
+}
+.board-text-format {
+  margin: 4%;
+  padding: 0;
+}
 #app {
+  margin: 0;
+  padding: 0;
   font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
